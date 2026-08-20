@@ -14,28 +14,23 @@ export const Footer = () => {
             <p className="text-white/40 text-sm leading-relaxed max-w-md">
               GenQuantis is a deep-tech company building quantum-powered intelligence systems that help enterprises solve computationally impossible problems faster, smarter, and at scale. We combine quantum computing, AI, and advanced optimization technologies to unlock the next generation of business transformation.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary transition-all">
-                <Twitter size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary transition-all">
-                <Linkedin size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary transition-all">
-                <Github size={18} />
-              </a>
-            </div>
           </div>
 
           <div>
             <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-8">Platform</h4>
             <div className="grid grid-cols-2 gap-x-8 gap-y-4">
               <ul className="space-y-4">
-                {['Robo', 'Solutions', 'Product', 'Innovations', 'Insights'].map(item => (
-                  <li key={item}>
-                    <Link to={`/${item.toLowerCase().replace(' ', '')}`} className="text-white/40 hover:text-primary text-sm transition-colors uppercase tracking-widest font-bold text-[10px] block">
-                      {item}
-                    </Link>
+                {[
+                  { name: 'Lifescience and Discovery', path: 'https://aidiscovery.genquantis.com/' },
+                  { name: 'Healthcare', path: 'https://www.curaquantis.com/' },
+                  { name: 'Robotics', path: 'https://robotics.genquantis.com/' },
+                  { name: 'AI Voice Agent', path: 'https://www.curaquantis.com/' },
+                  { name: 'Academy', path: 'https://academy.genquantis.com/' },
+                ].map(item => (
+                  <li key={item.name}>
+                    <a href={item.path} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-primary text-sm transition-colors uppercase tracking-widest font-bold text-[10px] block">
+                      {item.name}
+                    </a>
                   </li>
                 ))}
               </ul>

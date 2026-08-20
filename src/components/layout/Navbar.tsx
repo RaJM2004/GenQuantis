@@ -30,6 +30,10 @@ export const Navbar = () => {
       ]
     },
     {
+      name: 'Quantum',
+      path: '/quantum',
+    },
+    {
       name: 'Products',
       path: '/product',
       subItems: [
@@ -99,7 +103,7 @@ export const Navbar = () => {
       <div className="hidden lg:flex border-b border-white/5 bg-black/40 px-6 lg:px-24 py-2 justify-between items-center text-[10px] font-bold tracking-[0.15em] uppercase text-white/40">
         <div className="flex items-center gap-6">
           <a
-            href="https://zerokost.com/"
+            href="https://www.curaquantis.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-primary group cursor-pointer"
@@ -130,7 +134,7 @@ export const Navbar = () => {
           </a>
           <div className="w-[1px] h-3 bg-white/10" />
           <a
-            href="https://genesysquantis.com/"
+            href="https://academy.genquantis.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer group"

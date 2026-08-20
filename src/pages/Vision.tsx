@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { Network, Cpu, BarChart3, Quote } from 'lucide-react';
+import Leaders from '../components/custom/Leaders';
+import TeamPage from '../components/custom/TeamPage';
 
 export const Vision = () => {
+  const [showTeam, setShowTeam] = useState(false);
+
   return (
     <div className="min-h-screen bg-black overflow-x-hidden selection:bg-primary/30">
       <Navbar />
 
-      {/* Hero Section */}
+      {showTeam ? (
+        <div className="pt-20">
+          <TeamPage onBack={() => setShowTeam(false)} />
+        </div>
+      ) : (
+        <>
+          {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center text-center px-6 pt-20 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -171,6 +181,9 @@ export const Vision = () => {
           </motion.div>
         </div>
       </section>
+          <Leaders onSeeMore={() => setShowTeam(true)} />
+        </>
+      )}
 
       <Footer />
     </div>

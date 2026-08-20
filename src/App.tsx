@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/layout/ScrollToTop';
 import { Home } from './pages/Home';
+import { Quantum } from './pages/Quantum';
 import { Intelligence } from './pages/Intelligence';
 import { Enterprise } from './pages/Enterprise';
 import { LifeScience } from './pages/LifeScience';
@@ -23,6 +24,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/quantum" element={<Quantum />} />
         <Route path="/intelligence" element={<Intelligence />} />
         <Route path="/enterprise" element={<Enterprise />} />
         <Route path="/lifescience" element={<LifeScience />} />
