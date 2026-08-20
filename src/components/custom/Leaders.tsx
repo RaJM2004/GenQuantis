@@ -14,6 +14,11 @@ const leaders = [
     title: 'Co-Founder and Director',
     location: 'India',
   },
+  {
+    name: 'Pavan Sirish Dey',
+    title: 'Executive Director',
+    location: 'India',
+  },
 ];
 
 export default function Leaders({ onSeeMore }) {

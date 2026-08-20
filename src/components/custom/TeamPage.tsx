@@ -15,6 +15,11 @@ const team = {
       title: 'Co-Founder and Director',
       location: 'India',
     },
+    {
+      name: 'Pavan Sirish Dey',
+      title: 'Executive Director',
+      location: 'India',
+    },
   ],
   core: [
     {
