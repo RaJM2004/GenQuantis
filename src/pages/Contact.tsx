@@ -137,7 +137,7 @@ export const Contact = () => {
                     <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0">
                       <Mail size={24} />
                     </div>
-                    <p className="text-white text-lg font-bold font-space">connect@genquantis.ai</p>
+                    <p className="text-white text-lg font-bold font-space">support@genquantis.com</p>
                   </div>
                   <div className="flex gap-6 items-center">
                     <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 shrink-0">

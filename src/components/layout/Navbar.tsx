@@ -81,6 +81,11 @@ export const Navbar = () => {
       ]
     },
     {
+      name: 'Academy',
+      path: 'https://academy.genquantaa.com/',
+      isExternal: true
+    },
+    {
       name: 'Company',
       path: '/about',
       subItems: [
@@ -99,51 +104,7 @@ export const Navbar = () => {
 
   return (
     <div className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${scrolled ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' : 'bg-transparent'}`}>
-      {/* Mini Top Bar */}
-      <div className="hidden lg:flex border-b border-white/5 bg-black/40 px-6 lg:px-24 py-2 justify-between items-center text-[10px] font-bold tracking-[0.15em] uppercase text-white/40">
-        <div className="flex items-center gap-6">
-          <a
-            href="https://www.curaquantis.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-primary group cursor-pointer"
-          >
-            <Sparkles size={12} className="group-hover:animate-pulse" />
-            <span className="group-hover:text-white transition-colors tracking-[0.2em]">AI Calling Agent</span>
-          </a>
-          <div className="w-[1px] h-3 bg-white/10" />
-          <a href="tel:+917036955133" className="flex items-center gap-2 hover:text-white transition-colors">
-            <Phone size={12} />
-            +91 7036955133
-          </a>
-          <div className="w-[1px] h-3 bg-white/10" />
-          <a href="mailto:connect@genquantis.com" className="flex items-center gap-2 hover:text-white transition-colors lowercase tracking-normal font-medium">
-            <Mail size={12} />
-            connect@genquantis.com
-          </a>
-        </div>
-        <div className="flex items-center gap-6">
-          <a
-            href="https://wa.me/917036955133"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-primary transition-colors cursor-pointer group"
-          >
-            <MessageSquare size={12} className="group-hover:scale-110 transition-transform" />
-            <span>Chat with us</span>
-          </a>
-          <div className="w-[1px] h-3 bg-white/10" />
-          <a
-            href="https://academy.genquantis.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer group"
-          >
-            <GraduationCap size={12} className="group-hover:scale-110 transition-transform" />
-            <span>Academy</span>
-          </a>
-        </div>
-      </div>
+
 
       <nav className="flex items-center justify-between px-6 lg:px-24 py-4 lg:py-6 relative">
         <div className="flex items-center gap-6">
@@ -169,19 +130,31 @@ export const Navbar = () => {
                 onMouseEnter={() => link.subItems && setActiveDropdown(link.name)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <Link
-                  to={link.path}
-                  className={`hover:text-primary transition-colors relative flex items-center gap-1.5 py-2 ${location.pathname === link.path ? 'text-white' : ''}`}
-                >
-                  {link.name}
-                  {link.subItems && (
-                    <ChevronDown
-                      size={10}
-                      className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180 text-primary' : 'text-white/30 group-hover:text-primary'}`}
-                    />
-                  )}
-                  <span className={`absolute bottom-0 left-0 h-[1px] bg-primary transition-all duration-300 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'}`} />
-                </Link>
+                {link.isExternal ? (
+                  <a
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-colors relative flex items-center gap-1.5 py-2"
+                  >
+                    {link.name}
+                    <span className="absolute bottom-0 left-0 h-[1px] bg-primary transition-all duration-300 w-0 group-hover:w-full" />
+                  </a>
+                ) : (
+                  <Link
+                    to={link.path}
+                    className={`hover:text-primary transition-colors relative flex items-center gap-1.5 py-2 ${location.pathname === link.path ? 'text-white' : ''}`}
+                  >
+                    {link.name}
+                    {link.subItems && (
+                      <ChevronDown
+                        size={10}
+                        className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180 text-primary' : 'text-white/30 group-hover:text-primary'}`}
+                      />
+                    )}
+                    <span className={`absolute bottom-0 left-0 h-[1px] bg-primary transition-all duration-300 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                  </Link>
+                )}
 
                 {link.subItems && (
                   <AnimatePresence>
@@ -242,21 +215,33 @@ export const Navbar = () => {
                 <a href="tel:+917036955133" className="text-white/40 text-[10px] font-bold flex items-center gap-2">
                   <Phone size={14} /> +91 7036955133
                 </a>
-                <a href="mailto:connect@genquantis.com" className="text-white/40 text-[10px] font-bold flex items-center gap-2">
-                  <Mail size={14} /> connect@genquantis.com
+                <a href="mailto:support@genquantis.com" className="text-white/40 text-[10px] font-bold flex items-center gap-2">
+                  <Mail size={14} /> support@genquantis.com
                 </a>
               </div>
 
               {navLinks.map((link) => (
                 <div key={link.name} className="flex flex-col gap-4">
                   <div className="flex items-center justify-between">
-                    <Link
-                      to={link.path}
-                      onClick={() => setIsOpen(false)}
-                      className={`text-sm font-bold uppercase tracking-widest transition-colors ${location.pathname === link.path ? 'text-primary' : 'text-white/60 hover:text-primary'}`}
-                    >
-                      {link.name}
-                    </Link>
+                    {link.isExternal ? (
+                      <a
+                        href={link.path}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsOpen(false)}
+                        className={`text-sm font-bold uppercase tracking-widest transition-colors text-white/60 hover:text-primary`}
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.path}
+                        onClick={() => setIsOpen(false)}
+                        className={`text-sm font-bold uppercase tracking-widest transition-colors ${location.pathname === link.path ? 'text-primary' : 'text-white/60 hover:text-primary'}`}
+                      >
+                        {link.name}
+                      </Link>
+                    )}
                     {link.subItems && (
                       <button
                         onClick={() => setActiveDropdown(activeDropdown === link.name ? null : link.name)}

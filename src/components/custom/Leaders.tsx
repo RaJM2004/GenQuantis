@@ -7,17 +7,18 @@ const leaders = [
   {
     name: 'Ashwin Kumar T S',
     title: 'Founder and CEO',
+    description: 'Leading AI innovations and technical strategy',
     location: 'India',
-  },
-  {
-    name: 'Ananya P',
-    title: 'Co-Founder and Director',
-    location: 'India',
+    image: '/Ashwin-1.png',
+    email: 'ashwin@genquantis.com'
   },
   {
     name: 'Pavan Sirish Dey',
-    title: 'Executive Director',
+    title: 'Co-Founder & Executive Director',
+    description: 'Driving civil engineering integrations and operations',
     location: 'India',
+    image: '/Pawan.jpeg',
+    email: 'pavan@genquantis.com'
   },
 ];
 
@@ -89,8 +90,12 @@ export default function Leaders({ onSeeMore }) {
               
               <div className="flex gap-6 items-center relative z-10">
                 {/* Avatar Placeholder with glowing effect */}
-                <div className="w-20 h-20 flex-shrink-0 bg-white/5 rounded-full flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(66,140,252,0.3)] transition-all duration-500">
-                  <User size={28} className="text-white/40 group-hover:text-primary transition-colors" />
+                <div className="w-20 h-20 flex-shrink-0 bg-white/5 rounded-full flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(66,140,252,0.3)] transition-all duration-500 overflow-hidden">
+                  {leader.image ? (
+                    <img src={leader.image} alt={leader.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <User size={28} className="text-white/40 group-hover:text-primary transition-colors" />
+                  )}
                 </div>
                 
                 <div className="flex flex-col justify-between flex-grow">
@@ -101,21 +106,28 @@ export default function Leaders({ onSeeMore }) {
                     <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-2">
                       {leader.title}
                     </p>
-                    <p className="text-sm text-white/60 font-inter">
+                    <p className="text-sm text-white/60 font-inter mb-2">
                       {leader.location}
                     </p>
+                    {leader.description && (
+                      <p className="text-xs text-white/40 font-inter leading-relaxed border-t border-white/5 pt-3 mt-3">
+                        {leader.description}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
 
               {/* Action area */}
               <div className="mt-6 pt-4 border-t border-white/5 flex justify-end relative z-10">
-                <a
-                  href="#"
-                  className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-primary transition-all duration-300 border border-white/10 hover:border-primary"
-                >
-                  <Mail size={14} />
-                </a>
+                {leader.email && (
+                  <a
+                    href={`mailto:${leader.email}`}
+                    className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-primary transition-all duration-300 border border-white/10 hover:border-primary"
+                  >
+                    <Mail size={14} />
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}

@@ -17,37 +17,46 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-8">Platform</h4>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-4">
-              <ul className="space-y-4">
+            <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-8">Subsidiaries & Partners</h4>
+            <div className="flex flex-col gap-y-6">
                 {[
-                  { name: 'Lifescience and Discovery', path: 'https://aidiscovery.genquantis.com/' },
-                  { name: 'Healthcare', path: 'https://www.curaquantis.com/' },
-                  { name: 'Robotics', path: 'https://robotics.genquantis.com/' },
-                  { name: 'AI Voice Agent', path: 'https://www.curaquantis.com/' },
-                  { name: 'Academy', path: 'https://academy.genquantis.com/' },
+                  { 
+                    name: 'Healthcare (CuraQuantis)', 
+                    path: 'https://curaquantis.com/',
+                    description: 'Transforming healthcare with advanced AI solutions.'
+                  },
+                  { 
+                    name: 'Robotics (Subsidiary)', 
+                    path: 'https://robotics.genquantis.com/',
+                    description: 'Pioneering next-generation robotics and automation.'
+                  },
+                  { 
+                    name: 'GenQuantaa Academy (Partner)', 
+                    path: 'https://academy.genquantaa.com/',
+                    description: 'Empowering future deep-tech innovators.'
+                  },
                 ].map(item => (
-                  <li key={item.name}>
-                    <a href={item.path} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-primary text-sm transition-colors uppercase tracking-widest font-bold text-[10px] block">
+                  <div key={item.name} className="group">
+                    <a href={item.path} target="_blank" rel="noopener noreferrer" className="text-white/80 group-hover:text-primary transition-colors uppercase tracking-widest font-bold text-[11px] block mb-1">
                       {item.name}
                     </a>
-                  </li>
+                    <p className="text-white/40 text-[10px] leading-relaxed font-inter pr-4">
+                      {item.description}
+                    </p>
+                  </div>
                 ))}
-              </ul>
-              <ul className="space-y-4">
-                {['Blog', 'Careers', 'About', 'Security', 'Investors'].map(item => (
-                  <li key={item}>
-                    <Link to={`/${item.toLowerCase().replace(' ', '')}`} className="text-white/40 hover:text-primary text-sm transition-colors uppercase tracking-widest font-bold text-[10px] block">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
 
           <div>
             <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-8">Contact</h4>
+            <div className="mb-6">
+              <img 
+                src="https://w7.pngwing.com/pngs/158/820/png-transparent-hyderabad-t-hub-startup-company-business-incubator-entrepreneurship-others-miscellaneous-text-trademark.png" 
+                alt="T-Hub Logo" 
+                className="w-24 bg-white/90 p-2 rounded-sm"
+              />
+            </div>
             <ul className="space-y-6">
               <li className="flex gap-4 items-start">
                 <MapPin className="text-primary shrink-0" size={18} />
@@ -59,13 +68,25 @@ export const Footer = () => {
               </li>
               <li className="flex gap-4 items-center">
                 <Mail className="text-primary shrink-0" size={18} />
-                <span className="text-white/40 text-sm">connect@genquantis.ai</span>
+                <span className="text-white/40 text-sm">support@genquantis.com</span>
               </li>
               <li className="flex gap-4 items-center">
                 <Phone className="text-primary shrink-0" size={18} />
                 <span className="text-white/40 text-sm">+91 7036955133</span>
               </li>
             </ul>
+            <div className="mt-6 w-full h-32 rounded-lg overflow-hidden border border-white/10 opacity-70 hover:opacity-100 transition-opacity">
+              <iframe
+                title="T-Hub Hyderabad Location"
+                src="https://maps.google.com/maps?q=17.4326019,78.3815667&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
 
           <div>

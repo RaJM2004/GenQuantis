@@ -8,18 +8,19 @@ const team = {
     {
       name: 'Ashwin Kumar T S',
       title: 'Founder and CEO',
+      description: 'Leading AI innovations and technical strategy',
       location: 'India',
-    },
-    {
-      name: 'Ananya P',
-      title: 'Co-Founder and Director',
-      location: 'India',
+      image: '/Ashwin-1.png',
+      email: 'ashwin@genquantis.com'
     },
     {
       name: 'Pavan Sirish Dey',
-      title: 'Executive Director',
+      title: 'Co-Founder & Executive Director',
+      description: 'Driving civil engineering integrations and operations',
       location: 'India',
-    },
+      image: '/Pawan.jpeg',
+      email: 'pavan@genquantis.com'
+    }
   ],
   core: [
     {
@@ -74,13 +75,17 @@ const TeamSection = ({ title, members }) => (
         >
           {/* Card hover gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          
+
           <div className="flex gap-6 items-center relative z-10">
             {/* Avatar Placeholder with glowing effect */}
-            <div className="w-16 h-16 flex-shrink-0 bg-white/5 rounded-full flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(66,140,252,0.3)] transition-all duration-500">
-              <User size={24} className="text-white/40 group-hover:text-primary transition-colors" />
+            <div className="w-16 h-16 flex-shrink-0 bg-white/5 rounded-full flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(66,140,252,0.3)] transition-all duration-500 overflow-hidden">
+              {member.image ? (
+                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+              ) : (
+                <User size={24} className="text-white/40 group-hover:text-primary transition-colors" />
+              )}
             </div>
-            
+
             <div className="flex flex-col justify-between flex-grow">
               <div>
                 <h3 className="text-lg font-bold text-white mb-1 font-space group-hover:text-primary transition-colors">
@@ -89,21 +94,28 @@ const TeamSection = ({ title, members }) => (
                 <p className="text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">
                   {member.title}
                 </p>
-                <p className="text-xs text-white/60 font-inter">
+                <p className="text-xs text-white/60 font-inter mb-2">
                   {member.location}
                 </p>
+                {member.description && (
+                  <p className="text-xs text-white/40 font-inter leading-relaxed border-t border-white/5 pt-2 mt-2">
+                    {member.description}
+                  </p>
+                )}
               </div>
             </div>
           </div>
 
           {/* Action area */}
           <div className="mt-4 pt-3 border-t border-white/5 flex justify-end relative z-10">
-            <a
-              href="#"
-              className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-primary transition-all duration-300 border border-white/10 hover:border-primary"
-            >
-              <Mail size={12} />
-            </a>
+            {member.email && (
+              <a
+                href={`mailto:${member.email}`}
+                className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-primary transition-all duration-300 border border-white/10 hover:border-primary"
+              >
+                <Mail size={12} />
+              </a>
+            )}
           </div>
         </motion.div>
       ))}
@@ -147,7 +159,7 @@ export default function TeamPage({ onBack }) {
           >
             Our Team <span className="text-[#60A5FA]">Strength</span>
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
